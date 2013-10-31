@@ -1,0 +1,20 @@
+{
+  "name": "dataSetIE.js",
+  "description": "Allows access to all the custom data attributes on IE lower than 11",
+  "version": "0.2.0",
+  "author": "Thiago Lagden",
+  "main": [
+    "dataSetIE.js"
+  ],
+  "keyword": [
+    "customize",
+    "input",
+    "checkbox"
+  ],
+  "ignore": [
+    "example",
+    "README.md",
+    ".gitignore",
+    ".bowerrc"
+  ]
+}
