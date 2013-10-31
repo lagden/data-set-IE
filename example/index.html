@@ -9,6 +9,7 @@
     <h1>Example - dataset for IE lt 11</h1>
 
     <div id="awesome" data-awesome-stuff="nice"></div>
+    <div id="fucckkk"></div>
 
     <script type="text/javascript" src="../dataSetIE.js"></script>
     <script type="text/javascript">
@@ -19,9 +20,12 @@
         var el = document.getElementById('awesome');
         el.dataset.newStuff = "new stuff";
 
+        var fuck = document.getElementById('fucckkk');
+        fuck.dataset.yeah = "yeahhh";
+
         var cc = 0;
         var i = setInterval(function(){
-            el.insertAdjacentHTML('afterend', '<p><b>' + el.dataset.awesomeStuff + '</b> | <b>' + el.dataset.newStuff + '</b></p>');
+            el.insertAdjacentHTML('afterend', '<p><b>' + el.dataset.awesomeStuff + '</b> | <b>' + el.dataset.newStuff + '</b> | <b>' + fuck.dataset.yeah + '</b></p>');
             cc++;
             if(cc === 10)
                 clearInterval(i);
