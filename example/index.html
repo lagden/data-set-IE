@@ -11,11 +11,11 @@
     <div id="awesome" data-awesome-stuff="nice"></div>
     <div id="fucckkk"></div>
 
-    <script type="text/javascript" src="../dataSetIE.js"></script>
+    <script type="text/javascript" src="../dataset.js"></script>
     <script type="text/javascript">
         // Runs only on IE lt 11
         // See reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.dataset
-        new DataSetIE(document, navigator, true);
+        new Dataset(document, navigator, true);
 
         var el = document.getElementById('awesome');
         el.dataset.newStuff = "new stuff";

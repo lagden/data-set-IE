@@ -1,8 +1,8 @@
 /**
- * dataSetIE.js
- * Version 0.2.2
+ * dataset.js
+ * Version 1.0.0
  * Thiago Lagden | @thiagolagden | lagden@gmail.com
- * It is a plugin that allows access, both in reading and writing mode, to all the custom data attributes (data-*) set on the element in IE lower than 11
+ * It is a plugin that allows access, both in reading and writing mode, to all the custom data attributes (data-*) set on the element
  * 
  * Reference:
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.dataset
@@ -10,13 +10,15 @@
 
 ;(function(window) {
 
-    function DataSetIE(doc, nav, isDebug) {
+    function Dataset(doc, nav, isDebug) {
         this.doc = doc;
         this.nav = nav;
         this.isDebug = isDebug || false;
 
-        var ver = this.IEVersion();
-        if (ver > -1 && ver <= 10.0) {
+        if (this.isDebug)
+            console.log("doTest", this.doTest());
+
+        if (this.doTest() === false) {
             var all = this.doc.getElementsByTagName("*");
             for (var i = all.length - 1; i >= 0; i--) {
                 all[i].dataset = {};
@@ -42,14 +44,21 @@
         return null;
     }
 
-    // Return IE version
-    DataSetIE.prototype.IEVersion = function() {
-        var rv = -1;
-        if (this.nav.appName == 'Microsoft Internet Explorer')
-            if (/MSIE ([0-9]{1,}[\.0-9]{0,})/.exec(this.nav.userAgent) !== null)
-                rv = parseFloat(RegExp.$1);
-        return rv;
+    // Test support
+    // https://github.com/phiggins42/has.js/blob/master/detect/dom.js#L17
+    Dataset.prototype.doTest = function() {
+        var el = this.doc.createElement("div");
+        el.setAttribute("data-a-b", "c");
+        return isHostType(el, "dataset") && el.dataset.aB == "c";
     };
+
+    // Types of object, function, or unknown.
+    // https://github.com/phiggins42/has.js/blob/master/has.js#L101
+    function isHostType(object, property) {
+        var NON_HOST_TYPES = { "boolean": 1, "number": 1, "string": 1, "undefined": 1 };
+        var type = typeof object[property];
+        return type == "object" ? !!object[property] : !NON_HOST_TYPES[type];
+    }
 
     // Return a data attribute in camelcase
     function dataCamelCase(name) {
@@ -69,6 +78,7 @@
     }
 
     // Return a string with first letter in uppercase
+    // https://raw.github.com/kvz/phpjs/master/functions/strings/ucfirst.js
     function ucfirst(str) {
         str += "";
         var f = str.charAt(0).toUpperCase();
@@ -77,8 +87,8 @@
 
     // AMD Support
     if (typeof define === 'function' && define.amd)
-        define(function() { return DataSetIE; });
+        define(function() { return Dataset; });
     else
-        window.DataSetIE = DataSetIE;
+        window.Dataset = Dataset;
 
 }(window));
