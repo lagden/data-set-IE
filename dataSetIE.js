@@ -1,6 +1,6 @@
 /**
  * dataSetIE.js
- * Version 0.2.1
+ * Version 0.2.2
  * Thiago Lagden | @thiagolagden | lagden@gmail.com
  * It is a plugin that allows access, both in reading and writing mode, to all the custom data attributes (data-*) set on the element in IE lower than 11
  * 
@@ -76,7 +76,6 @@
     }
 
     // AMD Support
-    var define = define || null;
     if (typeof define === 'function' && define.amd)
         define(function() { return DataSetIE; });
     else
