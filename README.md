@@ -1,6 +1,6 @@
 # dataSetIE.js
 
-It is a plugin that allows access, in reading mode, to all the custom data attributes on IE lower than 11.
+It is a plugin that allows access, both in reading and writing mode, to all the custom data attributes (data-*) set on the element in IE lower than 11.
 
 **Reference:** [https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.dataset)
 
